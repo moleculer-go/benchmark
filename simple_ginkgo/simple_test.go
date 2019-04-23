@@ -13,7 +13,7 @@ var _ = Describe("Benchmarking", func() {
 	var bkr *broker.ServiceBroker
 	BeforeSuite(func() {
 		bkr = broker.New(&moleculer.Config{})
-		bkr.AddService(moleculer.Service{
+		bkr.Publish(moleculer.ServiceSchema{
 			Name: "math",
 			Actions: []moleculer.Action{{
 				Name: "add",

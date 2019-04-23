@@ -2,6 +2,7 @@ package main
 
 import (
 	"fmt"
+	"strconv"
 	"sync"
 	"time"
 
@@ -18,7 +19,7 @@ func main() {
 	var bkr *broker.ServiceBroker
 
 	bkr = broker.New(&moleculer.Config{})
-	bkr.AddService(moleculer.Service{
+	bkr.Publish(moleculer.ServiceSchema{
 		Name: "math",
 		Actions: []moleculer.Action{{
 			Name: "add",
@@ -76,10 +77,10 @@ func (b *bench) print() {
 	b.values.Range(func(key, value interface{}) bool {
 		min, max, avg, total := stats(value.([]float64))
 		fmt.Println("\n **** Stats for [ ", key, " ] **** ")
-		fmt.Println("\n avg: ", avg)
-		fmt.Println("\n min: ", min)
-		fmt.Println("\n max: ", max)
-		fmt.Println("\n total: ", total)
+		fmt.Println("\n avg: ", strconv.FormatFloat(avg, 'f', 6, 64))
+		fmt.Println("\n min: ", strconv.FormatFloat(min, 'f', 6, 64))
+		fmt.Println("\n max: ", strconv.FormatFloat(max, 'f', 6, 64))
+		fmt.Println("\n total: ", strconv.FormatFloat(total, 'f', 6, 64))
 		return true
 	})
 }
