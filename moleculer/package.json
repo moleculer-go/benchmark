@@ -1,5 +1,6 @@
 {
   "dependencies": {
-    "moleculer": "^0.13.8"
+    "moleculer": "^0.13.8",
+    "lodash": ">=4.17.13"
   }
 }
